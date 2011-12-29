@@ -1,3 +1,10 @@
+# Penn Book Bazaar #
+This is the installation of OpenClassifieds used for [Penn Book Bazaar](http://pennbookbazaar.com/). It has some issues, but it is ours, so we love it. Below please find the readme for OpenClassifieds itself.
+
+Love,
+PennApps Labs
+
+
 OpenClassifieds 1.7.0.1
 Release date:   05/07/2010
 License:        GPL v3

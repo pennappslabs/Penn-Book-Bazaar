@@ -1,17 +1,31 @@
 <?php
 //Open Classifieds Installation Config 07/09/2011 21:50:28
-define('SITE_NAME','Penn Book Bazaar ');
+
+/*
+ * NB: This is the default config file. Set the proper Rename it 'config.php' 
+ * and set the proper values for it to work.
+ */
+
+/* These are values you may want/need to change with different installs: */
+define('ADMIN','admin');
+define('ADMIN_PWD','smart@lec'); 
+define('DB_HOST','localhost'); 
+define('DB_USER','DATABASE_CHANGE_ME'); //CHANGE
+define('DB_PASS','DB_PASSWORD_CHANGE_ME'); //CHANGE
+define('DB_NAME','DB_NAME_CHANGE_ME'); //CHANGE
+define('TABLE_PREFIX','oc_');
 define('NOTIFY_EMAIL','labs@pennapps.com');
+define('SITE_ROOT',$_SERVER['DOCUMENT_ROOT'].'/textbook');
+define('IMG_UPLOAD_DIR',$_SERVER['DOCUMENT_ROOT'].'/textbook/images/');
+define('CACHE_DATA_FILE',$_SERVER['DOCUMENT_ROOT'].'/textbook/cache/');
+define('SITEMAP_FILE',$_SERVER['DOCUMENT_ROOT'].'/textbook/sitemap.xml');
+define('SITE_URL','http://pennua.org/textbook');
+
+/* These'll pretty much stay the same: */
+define('SITE_NAME','Penn Book Bazaar ');
 define('LANGUAGE','en_EN');
 define('LOCALE_EXT','');
-define('ADMIN','admin');
-define('ADMIN_PWD','smart@lec');
-define('DB_HOST','localhost');
-define('DB_USER','pennuaor_pbb');
-define('DB_PASS','smart@lec');
-define('DB_NAME','pennuaor_textbook');
 define('DB_CHARSET','utf8');
-define('TABLE_PREFIX','oc_');
 define('SMTP_HOST','');
 define('SMTP_PORT','');
 define('SMTP_AUTH',false);
@@ -20,8 +34,6 @@ define('SMTP_PASS','');
 define('GMAIL',false);
 define('GMAIL_USER','');
 define('GMAIL_PASS','');
-define('SITE_URL','http://pennua.org/textbook');
-define('SITE_ROOT','/home5/pennuaor/public_html/textbook');
 define('CHARSET','UTF-8');
 define('DATE_FORMAT','mm-dd-yyyy');
 define('LOGON_TO_POST',true);
@@ -49,19 +61,16 @@ define('SIDEBAR','account,search,links');
 define('MAX_IMG_NUM','2');
 define('MAX_IMG_SIZE','4000000');
 define('IMG_UPLOAD','/images/');
-define('IMG_UPLOAD_DIR','/home5/pennuaor/public_html/textbook/images/');
 define('IMG_TYPES','gif,jpeg,jpg,png');
 define('IMG_RESIZE','600');
 define('IMG_RESIZE_THUMB','100');
 define('RSS_ITEMS','15');
 define('RSS_IMAGES',true);
-define('SITEMAP_FILE','/home5/pennuaor/public_html/textbook/sitemap.xml');
 define('SITEMAP_EXPIRE','86400');
 define('SITEMAP_DEL_ON_POST',true);
 define('SITEMAP_DEL_ON_CAT',true);
 define('SITEMAP_PING',false);
 define('CACHE_ACTIVE',true);
-define('CACHE_DATA_FILE','/home5/pennuaor/public_html/textbook/cache/');
 define('CACHE_EXPIRE','86400');
 define('CACHE_DEL_ON_POST',true);
 define('CACHE_DEL_ON_CAT',true);
