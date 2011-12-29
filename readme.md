@@ -4,8 +4,11 @@ This is the installation of OpenClassifieds used for [Penn Book Bazaar](http://p
 Love,
 PennApps Labs
 
+## Set-Up ##
+Just move `includes/config.php.default` to `includes/config.php` and fix the databse info in said file. Might have to `grep` for `/home5/pennuaor/` to fix any file references.
 
-OpenClassifieds 1.7.0.1
+
+## OpenClassifieds 1.7.0.1 ##
 Release date:   05/07/2010
 License:        GPL v3
 Installation:   http://open-classifieds.com/install/
