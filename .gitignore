@@ -3,3 +3,4 @@
 cache/
 error_log
 includes/config.php
+.htaccess
