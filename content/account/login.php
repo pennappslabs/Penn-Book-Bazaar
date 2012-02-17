@@ -1,6 +1,6 @@
 <?php
 require_once('../../includes/header.php');
-require_once('../../facebook.php');
+//require_once('../../facebook.php');
 $account = Account::createBySession();
 if ($account->exists){
     header("Location: ".accountURL());
