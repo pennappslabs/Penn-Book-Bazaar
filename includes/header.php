@@ -21,7 +21,7 @@ function getItemTitle() {
   		  echo "'>";
   ?>
   <meta property="og:description" content="Posted a textbook for sale on Penn Book Bazaar. View the ad by clicking this link.">
-  <meta property="og:image" content="http://pennua.org/textbook/pbbthumbfb.jpg">
+  <meta property="og:image" content="<?php echo SITE_URL; ?>/pbbthumbfb.jpg">
   
   <meta name="title" content="<?php echo $html_title;?>" />
   <meta name="description" content="<?php echo $html_description;?>" />

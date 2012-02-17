@@ -137,7 +137,7 @@ else {//home page carousel and categories?>
 	if ($account->exists){
 	}
 	else{ ?>
-    <p> To post or view a new book, you must <a href="http://pennua.org/textbook/login.htm">login</a> or <a href="http://pennua.org/textbook/register.htm">register for an account</a>. </p>
+    <p> To post or view a new book, you must <a href="<?php echo SITE_URL; ?>/login.htm">login</a> or <a href="<?php echo SITE_URL; ?>/register.htm">register for an account</a>. </p>
     
     <?php } ?>
     <p>
@@ -148,7 +148,7 @@ else {//home page carousel and categories?>
 
 <p>
 <strong style="color:#F04949;">Searching for Books</strong><br/>
-Please check to see if someone wants to buy/sell your book before you <a href="http://pennua.org/textbook/publish.htm">add a listing</a>! Under Quick Search, you can search by book title, author, course name, course number, and ISBN. If no results are found, try multiple authors and possible alternative course listings. Also, the <a href="http://pennua.org/textbook/advanced-search.htm">Advanced Search</a> feature may yield more accurate results. 
+Please check to see if someone wants to buy/sell your book before you <a href="<?php echo SITE_URL; ?>/publish.htm">add a listing</a>! Under Quick Search, you can search by book title, author, course name, course number, and ISBN. If no results are found, try multiple authors and possible alternative course listings. Also, the <a href="<?php echo SITE_URL; ?>/advanced-search.htm">Advanced Search</a> feature may yield more accurate results. 
 </p>
 
 <p><strong style="color:#F04949;">Buying a Book</strong><br/>
@@ -156,7 +156,7 @@ All transactions occur outside Penn Book Bazaar. You can contact a seller either
     
     
 <p><strong style="color:#F04949;">Selling a Book</strong><br/>
-<a href="http://pennua.org/textbook/publish.htm">Post a book for "offer"</a>. Fill in the details of the book, including authors, course information, ISBN, and a description of condition. Submit, and all you have to do is wait for buyers to contact you via email. </p>
+<a href="<?php echo SITE_URL; ?>/publish.htm">Post a book for "offer"</a>. Fill in the details of the book, including authors, course information, ISBN, and a description of condition. Submit, and all you have to do is wait for buyers to contact you via email. </p>
      </div>
 <!-- 
       <div id="frontpage_cats">

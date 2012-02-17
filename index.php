@@ -4,7 +4,7 @@ require_once('includes/header.php');
 if (file_exists(SITE_ROOT.'/themes/'.THEME.'/index.php')){//index from the theme!
 	require_once(SITE_ROOT.'/themes/'.THEME.'/index.php'); 
 }
-else{//default not found in theme
+else{//default not found in theme}
 	
 ?>
 	<?php if ($advs) echo '<div class="category">'.advancedSearchForm().'</div>';?>
@@ -20,6 +20,17 @@ else{//default not found in theme
 		</p>
 	</div>
 	<?php }?>
+
+<div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=APP_ID";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 <div class="item">
 <?php 

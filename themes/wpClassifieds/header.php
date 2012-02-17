@@ -10,9 +10,9 @@ $secondH=substr(SITE_NAME,$pos);//second part of the name un blue
 <div class="container_12" id="wrap">
   <div class="grid_12" id="header">
     <div id="logo"> 
-      <h4><a href="<?php echo SITE_URL; ?>" title="<?php echo SITE_NAME; ?>"><img src="http://pennua.org/textbook/pbbbanner.png"/><!-- <span class="firstH"><?php echo $firstH; ?></span><span class="secondH"><?php echo $secondH; ?> --><!-- </span><span style="font-size: 12px; font-family: helvetica; letter-spacing:0px;"> UA/IFC textbook exchange</span></a> --></h4> 
-      <p><?php echo '<a title="'._("Post a new book!").'" href="http://pennua.org/textbook/publish.htm">'._("Post a new book!").'</a>';?></p>
-      <div style="float:right;"><a href="http://pennua.org"><img src="http://pennua.org/textbook/logo.jpg"/></a><a href="http://upennifc.com"><img src="http://pennua.org/textbook/ifclogo.jpg"/></a></div>
+      <h4><a href="<?php echo SITE_URL; ?>" title="<?php echo SITE_NAME; ?>"><img src="<?php echo SITE_URL; ?>/pbbbanner.png"/><!-- <span class="firstH"><?php echo $firstH; ?></span><span class="secondH"><?php echo $secondH; ?> --><!-- </span><span style="font-size: 12px; font-family: helvetica; letter-spacing:0px;"> UA/IFC textbook exchange</span></a> --></h4> 
+      <p><?php echo '<a title="'._("Post a new book!").'" href="'.SITE_URL.'/publish.htm">'._("Post a new book!").'</a>';?></p>
+      <div style="float:right;"><a href="http://pennua.org"><img src="<?php echo SITE_URL; ?>/logo.jpg"/></a><a href="http://upennifc.com"><img src="<?php echo SITE_URL; ?>/ifclogo.jpg"/></a></div>
       <div class="clear"></div>
     </div>
   </div>

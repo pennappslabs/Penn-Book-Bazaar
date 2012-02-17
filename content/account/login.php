@@ -1,6 +1,6 @@
 <?php
 require_once('../../includes/header.php');
-
+require_once('../../facebook.php');
 $account = Account::createBySession();
 if ($account->exists){
     header("Location: ".accountURL());
@@ -17,14 +17,16 @@ if ($_POST){
     else $rememberme = false;
     
     $account = new Account($email);
-        if ($account->logOn($password,$rememberme,"ocEmail")){
-            header("Location: ".accountURL());
-            die();
-        }
-        else {
-            if (!$account->exists) echo "<div id='sysmessage'>"._("Account not found")."</div>";//account not found by email
-            elseif (!$account->status_password) echo "<div id='sysmessage'>"._("Wrong password")."</div>";//wrong password
-            elseif (!$account->active) echo "<div id='sysmessage'>"._("Account is disabled")."</div>";//account is disabled
+    if ($account->logOn($password,$rememberme,"ocEmail")){
+        header("Location: ".accountURL());
+        die();
+    }
+    else {
+      if (!$account->exists) {
+        echo "<div id='sysmessage'>"._("Account not found")."</div>";//account not found by emaili
+      }
+      elseif (!$account->status_password) echo "<div id='sysmessage'>"._("Wrong password")."</div>";//wrong password
+      elseif (!$account->active) echo "<div id='sysmessage'>"._("Account is disabled")."</div>";//account is disabled
     }
 } else {
     $email = $_COOKIE["ocEmail"];
@@ -32,6 +34,8 @@ if ($_POST){
 }
 ?>
 <div>
+<div id='fblogin'><fb:login-button show-faces="false" width="200" max-rows="2" scope="email, publish_actions" onlogin="">Connect to Facebook</fb:login-button></div>
+<div id='OR' style='font-size: 20px; padding-left: 10px; padding-bottom: 10px; padding-top: 10px;'>OR</div>
 <form id="loginForm" name="loginForm" title="bob" action="" method="post" 
   onsubmit="return checkForm(this);">
 	<p><label for="email"><?php echo _("Penn Email Address")?>:<br />
@@ -44,7 +48,7 @@ if ($_POST){
 	<p><?php echo '<a href="'.accountRecoverPasswordURL().'">'._("Forgot My Password").'</a>';?></p>
 </form>
 </div>
-<br />
+<br/>
 <h3><?php echo _("If you do not have an account") .' '.'<a href="'.accountRegisterURL().'">'._("Register").'</a>';?></h3>
 <?php
 require_once('../../includes/footer.php');
