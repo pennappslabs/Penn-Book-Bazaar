@@ -252,3 +252,7 @@ color:#F04949; font-weight: bold; font-size: 14px; padding-bottom: 20px; }
 .hidden {
   display: none;
 }
+#fblogin {
+  width:260px;
+  height:22px;
+}
