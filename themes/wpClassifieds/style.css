@@ -21,7 +21,7 @@ select {background: #F9F9F9;font-family: Arial, Tahoma, Verdana;font-size: 11px;
 /* Links */
 
 a, a:visited {color: #0c4a8a;text-decoration: none; font-size: 13px;}
-a:hover {color: #0c4a8a;text-decoration: underline; font-size: 13px;}
+a:hover {color: #0c4a8a;text-decoration: underline; }
 a img {border: none;}
 a:focus, a:hover, a:active {outline: none;}
 

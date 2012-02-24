@@ -69,7 +69,7 @@ function getItemTitle() {
 <body>
 <?php
 require_once(SITE_ROOT.'/themes/'.THEME.'/header.php');
-require_once(SITE_ROOT.'/facebook.php');
+require_once(SITE_ROOT.'/includes/facebook.php');
 ?>
 <!--googleoff: index-->
 <noscript>

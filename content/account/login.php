@@ -1,7 +1,7 @@
 <?php
 require_once('../../includes/header.php');
-//require_once('../../facebook.php');
 $account = Account::createBySession();
+
 if ($account->exists){
     header("Location: ".accountURL());
     die();
@@ -10,24 +10,24 @@ if ($account->exists){
 <h2><?php echo _("Login")?></h2>
 <?php
 if ($_POST){
-    $email = cP('email');
-    $password = cP('password');
-    $rememberme = cP('rememberme');
-    if ($rememberme == "1") $rememberme = true;
-    else $rememberme = false;
-    
-    $account = new Account($email);
-    if ($account->logOn($password,$rememberme,"ocEmail")){
-        header("Location: ".accountURL());
-        die();
+  $email = cP('email');
+  $password = cP('password');
+  $rememberme = cP('rememberme');
+  if ($rememberme == "1") $rememberme = true;
+  else $rememberme = false;
+  
+  $account = new Account($email);
+  if ($account->logOn($password,$rememberme,"ocEmail")){
+      header("Location: ".accountURL());
+      die();
+  }
+  else {
+    if (!$account->exists) {
+      echo "<div id='sysmessage'>"._("Account not found")."</div>";//account not found by emaili
     }
-    else {
-      if (!$account->exists) {
-        echo "<div id='sysmessage'>"._("Account not found")."</div>";//account not found by emaili
-      }
-      elseif (!$account->status_password) echo "<div id='sysmessage'>"._("Wrong password")."</div>";//wrong password
-      elseif (!$account->active) echo "<div id='sysmessage'>"._("Account is disabled")."</div>";//account is disabled
-    }
+    elseif (!$account->status_password) echo "<div id='sysmessage'>"._("Wrong password")."</div>";//wrong password
+    elseif (!$account->active) echo "<div id='sysmessage'>"._("Account is disabled")."</div>";//account is disabled
+  }
 } else {
     $email = $_COOKIE["ocEmail"];
     if ($email!="") $rememberme = "1";

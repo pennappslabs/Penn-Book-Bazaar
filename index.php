@@ -1,6 +1,5 @@
 <?php
 require_once('includes/header.php');
-//require_once('facebook.php');
 
 if (file_exists(SITE_ROOT.'/themes/'.THEME.'/index.php')){//index from the theme!
 	require_once(SITE_ROOT.'/themes/'.THEME.'/index.php'); 

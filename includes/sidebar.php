@@ -257,7 +257,7 @@ $is_recover_page =
   ($_SERVER['REQUEST_URI'] == "/textbook/forgot-my-password.htm") ? 
   true : false;
 ?>
-  <div if='fblogin'><fb:login-button show-faces="false" width="200" max-rows="2" scope="email, publish_actions" onlogin="">Connect to Facebook</fb:login-button></div>
+  <div id='fblogin'><fb:login-button show-faces="false" width="200" max-rows="2" scope="email, publish_actions" onlogin="">Connect to Facebook</fb:login-button></div>
    <form <?php if ($is_recover_page){echo 'class="hidden" ';} ?>id="loginForm" name="loginForm" action="" method="post" onsubmit="return checkForm(this);">
   <p><label for="email"><?php echo _("Penn Email Address")?>:<br />
   <input type="text" name="email" id="email" maxlength="145" value="<?php echo $email;?>" onblur="validateEmail(this);" lang="false" /></label></p>
