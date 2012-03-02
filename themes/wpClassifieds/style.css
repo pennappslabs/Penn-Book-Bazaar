@@ -1,5 +1,5 @@
 /*
-Theme Name: wpClassifieds
+//Theme Name: wpClassifieds
 Theme URI: http://theme.anunciamex.com/
 Description:  Wordpress Classified Ads Theme. Developed by <a href="http://mx.anunciamex.com/">Anunciamex anuncios clasificados</a>.
 Version: 1.2.1
@@ -253,6 +253,6 @@ color:#F04949; font-weight: bold; font-size: 14px; padding-bottom: 20px; }
   display: none;
 }
 #fblogin {
-  width:260px;
-  height:22px;
+  /* width:260px;
+  height:22px; */
 }

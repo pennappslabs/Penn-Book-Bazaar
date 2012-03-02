@@ -11,16 +11,6 @@
       oath       : true,
       xfbml      : true  // parse XFBML
     });
-    FB.Event.subscribe('auth.login', function(response) {
-      FB.api('/me', function(response) {
-        var id = response.id;
-        //alert("Welcome " + response.name + "! We know allll about you now");
-        console.log(id);
-        FB.logout(function() {
-          console.log('you are logged out');
-        });
-      });
-    });
   };
   // Load the SDK Asynchronously
   (function(d){

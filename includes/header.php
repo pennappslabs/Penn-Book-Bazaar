@@ -67,9 +67,12 @@ function getItemTitle() {
     <?php }?>
 </head>
 <body>
+
 <?php
 require_once(SITE_ROOT.'/themes/'.THEME.'/header.php');
+
 ?>
+
 <!--googleoff: index-->
 <noscript>
 	<div style="height:30px;border:3px solid #6699ff;text-align:center;font-weight: bold;padding-top:10px">

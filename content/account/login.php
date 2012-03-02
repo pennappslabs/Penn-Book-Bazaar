@@ -1,5 +1,7 @@
 <?php
 require_once('../../includes/header.php');
+require '../../facebook-php-sdk/src/facebook.php';
+
 $account = Account::createBySession();
 
 if ($account->exists){
@@ -9,7 +11,32 @@ if ($account->exists){
 ?>
 <h2><?php echo _("Login")?></h2>
 <?php
-if ($_POST){
+
+$facebook = new Facebook(array(
+      'appId'  => '160063330776916',
+      'secret' => '12a83f54102db21f68cdf0fb52dcf2ff',
+    ));
+$user = $facebook->getUser();
+
+// someone is trying to log in with FB
+if ($user) {
+  global $ocdb;
+  $query = 'select * from '.TABLE_PREFIX.'accounts where FBid=\''.$user.'\'';
+  $result=$ocdb->getRows($query);
+  foreach ($result as $row ) {	
+    $name=$row['name'];
+    $email=$row['email'];
+    echo '<h1>name'.$name." email: ".$email.'</h1>';
+  }
+  if ($email) {
+    $account = new Account($email);
+    if ($account->logOn($password,$rememberme,"ocEmail")){
+      header("Location: ".accountURL());
+      die();
+    }
+  }
+
+} else if ($_POST){
   $email = cP('email');
   $password = cP('password');
   $rememberme = cP('rememberme');
@@ -34,7 +61,7 @@ if ($_POST){
 }
 ?>
 <div>
-<div id='fblogin'><fb:login-button show-faces="false" width="200" max-rows="2" scope="email, publish_actions" onlogin="">Connect to Facebook</fb:login-button></div>
+<div id='fblogin'><fb:login-button></fb:login-button></div>
 <div id='OR' style='font-size: 20px; padding-left: 10px; padding-bottom: 10px; padding-top: 10px;'>OR</div>
 <form id="loginForm" name="loginForm" title="bob" action="" method="post" 
   onsubmit="return checkForm(this);">
