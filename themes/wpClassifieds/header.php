@@ -1,6 +1,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>/themes/wpClassifieds/jsclass.js"></script>
 
+<div id="fb-root"></div>
+
 <div class="container_12" id="wrap">
   <div class="grid_12" id="header">
     <div id="logo"> 

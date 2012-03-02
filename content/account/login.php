@@ -24,6 +24,13 @@ if ($user) {
   if ($account->FBlogOn($user)) {
     header("Location: ".accountURL());
     die();
+  } else {
+    // search for their name based on their FB name
+    $user_profile = $facebook->api('/me');
+    echo "<h1>".$user_profile['name']."</h1>";
+
+    // if not found, create a new account for them with their new credentials
+    //header("Location: register.htm");
   }
 } else if ($_POST){
   $email = cP('email');
