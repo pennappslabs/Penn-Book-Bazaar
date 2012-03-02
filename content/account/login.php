@@ -20,18 +20,6 @@ $user = $facebook->getUser();
 
 // someone is trying to log in with FB
 if ($user) {
-  /*
-  global $ocdb;
-  $query = "select email from ".TABLE_PREFIX."accounts where FBid='".$user."' LIMIT 1";
-  $result=$ocdb->query($query);
-  if(mysql_num_rows($result)) {
-    $row = mysql_fetch_assoc($result);
-    $email=$row['email'];
-  } else {
-    echo "You have not connected your FB account yet :(";
-    die();
-  }
-  */
   $account = new Account($user);
   if ($account->FBlogOn($user)) {
     header("Location: ".accountURL());
@@ -62,6 +50,28 @@ if ($user) {
 }
 ?>
 <div>
+<script>               
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '<?php echo $facebook->getAppID() ?>', 
+      cookie: true, 
+      xfbml: true,
+      oauth: true
+    });
+    FB.Event.subscribe('auth.login', function(response) {
+      window.location.reload();
+    });
+    FB.Event.subscribe('auth.logout', function(response) {
+      window.location.reload();
+    });
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      '//connect.facebook.net/en_US/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
 <div id='fblogin'><fb:login-button></fb:login-button></div>
 <div id='OR' style='font-size: 20px; padding-left: 10px; padding-bottom: 10px; padding-top: 10px;'>OR</div>
 <form id="loginForm" name="loginForm" title="bob" action="" method="post" 
