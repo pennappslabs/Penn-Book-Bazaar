@@ -20,22 +20,23 @@ $user = $facebook->getUser();
 
 // someone is trying to log in with FB
 if ($user) {
+  /*
   global $ocdb;
-  $query = 'select * from '.TABLE_PREFIX.'accounts where FBid=\''.$user.'\'';
-  $result=$ocdb->getRows($query);
-  foreach ($result as $row ) {	
-    $name=$row['name'];
+  $query = "select email from ".TABLE_PREFIX."accounts where FBid='".$user."' LIMIT 1";
+  $result=$ocdb->query($query);
+  if(mysql_num_rows($result)) {
+    $row = mysql_fetch_assoc($result);
     $email=$row['email'];
-    echo '<h1>name'.$name." email: ".$email.'</h1>';
+  } else {
+    echo "You have not connected your FB account yet :(";
+    die();
   }
-  if ($email) {
-    $account = new Account($email);
-    if ($account->logOn($password,$rememberme,"ocEmail")){
-      header("Location: ".accountURL());
-      die();
-    }
+  */
+  $account = new Account($user);
+  if ($account->FBlogOn($user)) {
+    header("Location: ".accountURL());
+    die();
   }
-
 } else if ($_POST){
   $email = cP('email');
   $password = cP('password');

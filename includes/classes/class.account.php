@@ -15,39 +15,39 @@
 class Account {
     public $id = null;
     public $name = null;
-	public $email = null;
+    public $email = null;
+    public $FBis = null;
     public $location = null;
     public $active = 0;
     public $exists = false;
     public $status_password = false;
 
-    //constructor   
-    function __construct($email){
-        if ($email != "")
-        {
-            global $ocdb;
-    
-    		$query = "SELECT idAccount, name, idLocation, active FROM ".TABLE_PREFIX."accounts
-    		WHERE
-    		email = '".$email."'
-    		LIMIT 1";
-    
-    		$result=$ocdb->query($query);
-            
-    		if (mysql_num_rows($result))
-            {
-    		    $this->email = $email;
-                
-    			$row=mysql_fetch_assoc($result);
-                
-    			$this->id = $row['idAccount'];
-                $this->name = $row['name'];
-                $this->location = $row['idLocation'];
-                $this->active = $row['active'];
-                
-                $this->exists = true;
-            } else $this->exists = false;
-        } else $this->exists = false;
+    //constructor
+    // either an email or a FBid is passed in   
+    function __construct($arg) {
+      
+      if ($arg != "") {
+        if (strpos($arg, '@')) {
+          $query = "SELECT email, idAccount, name, idLocation, active FROM ".TABLE_PREFIX."accounts
+                    WHERE email = '".$arg."' LIMIT 1";
+        } else {
+          $query = "SELECT email, idAccount, name, idLocation, active FROM ".TABLE_PREFIX."accounts
+    	              WHERE FBid = '".$arg."' LIMIT 1";
+        }
+        global $ocdb;
+        $result = $ocdb->query($query);
+        if (mysql_num_rows($result)) {
+          $row = mysql_fetch_assoc($result);
+    	    $this->email = $row['email'];
+          $this->id = $row['idAccount'];
+          $this->name = $row['name'];
+          $this->location = $row['idLocation'];
+          $this->active = $row['active'];
+          $this->exists = true;
+        } else
+          $this->exists = false;
+      } else 
+        $this->exists = false;
     }
     
     public static function createBySession(){ //construct by session
@@ -133,66 +133,72 @@ class Account {
             } else return false;
         } else return false;
     }
-    
+
+  function FBlogOn($FBid) {
+    global $ocdb;
+    $query = "SELECT active FROM ".TABLE_PREFIX."accounts
+              WHERE FBid = '".$FBid."' LIMIT 1";
+    $result=$ocdb->query($query);
+    if(mysql_num_rows($result)) {
+      $row = mysql_fetch_assoc($result);
+      $this->exists = true;
+      $this->status_password = true;
+      $_SESSION["ocAccount"] = $this->id;
+      $this->active=1;
+      //update lastSigninDate
+      $query = "UPDATE ".TABLE_PREFIX."accounts
+         			  SET lastSigninDate = CURRENT_TIMESTAMP()
+        				WHERE idAccount = ".$this->id."";
+      $ocdb->query($query);
+      return true;
+    } else {
+      $this->exists = false;
+      return false;
+    }
+  }
+
     //Logon
-	function logOn($password,$remember=false,$rememberCookie="")
-    {
-        global $ocdb;
+	function logOn($password,$remember=false,$rememberCookie="") {
+    global $ocdb;
         
-		$query = "SELECT active, passhash, salt FROM ".TABLE_PREFIX."accounts
-		WHERE
-		email = '".$this->email."'
-		LIMIT 1";
+    $query = "SELECT active, passhash, salt FROM ".TABLE_PREFIX."accounts
+		          WHERE email = '".$this->email."' LIMIT 1";
 
 		$result=$ocdb->query($query);
-		if (mysql_num_rows($result))
-        {            
-			$row=mysql_fetch_assoc($result);
-            
-            $this->exists = true;
-
-            $securepassword = sha1($row['salt'].sha1($password));
-            
-            if ($row["passhash"]==$securepassword)
-            {
-                $this->status_password = true;
-                
-                if ($row["active"]==1)
-                {
-                    $_SESSION["ocAccount"] = $this->id;
-                    if ($remember)
-                    {
-                        if ($rememberCookie!="")
-                        {
-                            $expire=time()+60*60*24*30;
-                            setcookie($rememberCookie, $this->email, $expire);
-                        }
-                    } else if ($rememberCookie!="") setcookie($rememberCookie, "", time()-3600);
-                    
-                    $this->active = 1;
-                    
-                    //update lastSigninDate
-            		$query = "UPDATE ".TABLE_PREFIX."accounts
-            			    SET
-            				lastSigninDate = CURRENT_TIMESTAMP()
-            				WHERE
-            				idAccount = ".$this->id."";
-            		$ocdb->query($query);
-                    
-                    return true;
-                } else {
-                    $this->active = 0;
-                    return false;
-                }
-            } else {
-                $this->status_password = false;
-                return false;
+		if (mysql_num_rows($result)) {            
+			$row = mysql_fetch_assoc($result);
+      $this->exists = true;
+      $securepassword = sha1($row['salt'].sha1($password));
+      if ($row["passhash"]==$securepassword) {
+        $this->status_password = true;
+        if ($row["active"]==1) {
+          $_SESSION["ocAccount"] = $this->id;
+          if ($remember) {
+            if ($rememberCookie!="") {
+              $expire=time()+60*60*24*30;
+              setcookie($rememberCookie, $this->email, $expire);
             }
+          } else if ($rememberCookie!="") setcookie($rememberCookie, "", time()-3600);
+          $this->active = 1;
+          //update lastSigninDate
+          $query = "UPDATE ".TABLE_PREFIX."accounts
+            			  SET lastSigninDate = CURRENT_TIMESTAMP()
+            				WHERE idAccount = ".$this->id."";
+          $ocdb->query($query);
+          return true;
         } else {
-            $this->exists = false;
-            return false;
+          $this->active = 0;
+          return false;
         }
+      } else {
+        $this->status_password = false;
+        return false;
+      }
+    } else {
+      $this->exists = false;
+      return false;
     }
+  }
     
 	//Logout
 	public static function logOut()
