@@ -113,8 +113,6 @@
         <div class="addthis_toolbox addthis_default_style">
         <a href="http://www.addthis.com/bookmark.php?v=250" class="addthis_button_compact"><?php echo _("Share");?></a>
         <a class="addthis_button_facebook"></a>
-        <a class="addthis_button_googlebuzz"></a>
-        <a class="addthis_button_googlereader"></a>
         <a class="addthis_button_twitter"></a>
         <a class="addthis_button_print"></a>
         <a class="addthis_button_email"></a>
