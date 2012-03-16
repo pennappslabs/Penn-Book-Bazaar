@@ -1,5 +1,7 @@
 <?php
 require_once('includes/header.php');
+//need to only load facebook.php if not logged in
+require_once('facebook-php-sdk/src/facebook.php');
 
 if (file_exists(SITE_ROOT.'/themes/'.THEME.'/index.php')){//index from the theme!
 	require_once(SITE_ROOT.'/themes/'.THEME.'/index.php'); 

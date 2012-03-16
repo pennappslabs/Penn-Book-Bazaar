@@ -220,7 +220,27 @@ function sb_account($beg,$end){
     $ret.= '<div><a href="'.accountLogoutURL().'">'._("Logout").'</a></div>';
     return $beg.$ret.$end;
   } else {
-    if ($_POST){
+    $facebook = new Facebook(array(
+      'appId'  => '160063330776916',
+      'secret' => '12a83f54102db21f68cdf0fb52dcf2ff',
+    ));
+    $user = $facebook->getUser();
+
+    // someone is trying to log in with FB
+    if ($user) {
+      $account = new Account($user);
+      if ($account->FBlogOn($user)) {
+        header("Location: ".accountURL());
+        die();
+      } else {
+        // search for their name based on their FB name
+        $user_profile = $facebook->api('/me');
+        echo "<h1>".$user_profile['name']."</h1>";
+
+        // if not found, create a new account for them with their new credentials
+        //header("Location: register.htm");
+      }
+    } else if ($_POST){
       $email = cP('email');
       $password = cP('password');
       $rememberme = cP('rememberme');
