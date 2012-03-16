@@ -135,7 +135,7 @@ else {
   </div>
 <?php
 }//if else
-
-
+//if (file_exists(SITE_ROOT.'/themes/'.THEME.'/sidebar.php')) //index from the theme!
+//	require_once(SITE_ROOT.'/themes/'.THEME.'/sidebar.php'); 
 require_once('includes/footer.php');
 ?>

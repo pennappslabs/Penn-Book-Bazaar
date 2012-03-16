@@ -118,40 +118,6 @@ if (!isInSpamList($client_ip)){//no spammer
 			
 // 			alert(_("Your post was successfully activated, thank you"));
 			jsRedirect(SITE_URL.$postUrl);
-		
-
-						
-						//end database insert
-						
-// 						if ($image_check>1) upload_images_form($idPost,$title);
-							
-		
-						//EMAIL notify
-						//generate the email to send to the client , we allow them to erase posts? mmmm
-						// if(FRIENDLY_URL) {
-// 						    $linkConfirm=SITE_URL."/manage/?post=$idPost&pwd=$post_password&action=confirm";
-// 						    $linkDeactivate=SITE_URL."/manage/?post=$idPost&pwd=$post_password&action=deactivate";
-// 						    $linkEdit=SITE_URL."/manage/?post=$idPost&pwd=$post_password&action=edit";
-// 						}
-// 						else{
-// 						    $linkConfirm=SITE_URL."/content/item-manage.php?post=$idPost&pwd=$post_password&action=confirm";
-// 						    $linkDeactivate=SITE_URL."/content/item-manage.php?post=$idPost&pwd=$post_password&action=deactivate";
-// 						    $linkEdit=SITE_URL."/content/item-manage.php?post=$idPost&pwd=$post_password&action=edit";
-// 						}
-// 						
-//                         $message="<p>"._("To confirm your post click here").": ".
-// 								"<a href='$linkConfirm'>$linkConfirm</a><br /><br />".
-// 								_("If you want to edit your post click here").": 
-// 								<a href='$linkEdit'>$linkEdit</a><br />".
-// 								_("If this post is no longer available please click here").": 
-// 								<a href='$linkDeactivate'>$linkDeactivate</a></p>";
-//                         
-//                         $array_content[]=array("ACCOUNT", _("User"));
-//                         $array_content[]=array("MESSAGE", $message);
-//                         
-//                         $bodyHTML=buildEmailBodyHTML($array_content);
-//                         
-// 						echo _("Thank you! Check your email to confirm the post")." ".sendEmail(NOTIFY_EMAIL,_("Confirm")." ".$title." ". $_SERVER['SERVER_NAME'],$bodyHTML);
 						
 						//for preventing f5
 						$_SESSION["mathCaptcha"]="";

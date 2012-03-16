@@ -26,18 +26,18 @@
   </div>
   <div class="clear"></div>
   <div id="content">
-     <div class="grid_12">
+    <div class="grid_12">
       <div class=" breadcrumb">
-            <?php if(isset($categoryName)&&isset($categoryDescription)){ ?>
-			
+        <?php if(isset($categoryName)&&isset($categoryDescription)){ ?>
 			    <a title="<?php echo _("Post a new book in");?> <?php echo $categoryName;?>" href="<?php echo SITE_URL.newURL();?>"><?php echo _("Post a new book in");?> <?php echo $categoryName;?></a> 
-	        <?php }            
-	            else echo date("l d, F Y");
-	        ?>
-            <div style="float:right;"><b><?php echo _("Filter");?></b>:
-		    <?php generatePostType($currentCategory,$type); ?>
+	      <?php }            
+	        else echo date("l d, F Y");
+	      ?>
+        <div style="float:right;">
+          <b><?php echo _("Filter");?></b>:
+		      <?php generatePostType($currentCategory,$type); ?>
 		    </div>
-		</div>
+		  </div>
     </div>
     <div class="clear"></div>
        <div class="grid_8" id="content_main">
