@@ -214,43 +214,41 @@ function sb_account($beg,$end){
   $account = Account::createBySession();
   if ($account->exists){
     $ret='<h4>'._("Hello, ").' '.$account->name.'</h4>';
-    $ret.= '<li><a href="'.SITE_URL.'/publish.htm">'._("Post a New Book!").'</a></li>';
-    $ret.= '<li><a href="'.accountURL().'">'._("My Posts").'</a></li>';
-    $ret.= '<li><a href="'.accountSettingsURL().'">'._("Change My Password").'</a></li>';
-    $ret.= '<li><a href="'.accountLogoutURL().'">'._("Logout").'</a></li>';
+    $ret.='<div><a href="'.SITE_URL.'/publish.htm">'._("Post a New Book!").'</a></div>';
+    $ret.= '<div><a href="'.accountURL().'">'._("My Posts").'</a></div>';
+    $ret.= '<div><a href="'.accountSettingsURL().'">'._("Change My Password").'</a></div>';
+    $ret.= '<div><a href="'.accountLogoutURL().'">'._("Logout").'</a></div>';
     return $beg.$ret.$end;
-  }
-  else {
-  
-if ($_POST){
-  $email = cP('email');
-  $password = cP('password');
-  $rememberme = cP('rememberme');
-  if ($rememberme == "1") $rememberme = true;
-  else $rememberme = false;
-  
-  $account = new Account($email);
-  if ($account->logOn($password,$rememberme,"ocEmail")){
-    return sb_account($beg,$end);
   } else {
-    if (!$account->exists)//account not found by email
-      echo "<div id='sysmessage'>"._("Account not found")."</div>";
-    elseif (!$account->status_password) //wrong password
-      echo "<div id='sysmessage'>"._("Wrong password")."</div>";
-    elseif (!$account->active) { //account is disabled
-      echo "<div id='sysmessage'>" . 
+    if ($_POST){
+      $email = cP('email');
+      $password = cP('password');
+      $rememberme = cP('rememberme');
+      if ($rememberme == "1") $rememberme = true;
+      else $rememberme = false;
+  
+      $account = new Account($email);
+      if ($account->logOn($password,$rememberme,"ocEmail")){
+        return sb_account($beg,$end);
+      } else {
+        if (!$account->exists)//account not found by email
+          echo "<div id='sysmessage'>"._("Account not found")."</div>";
+        elseif (!$account->status_password) //wrong password
+          echo "<div id='sysmessage'>"._("Wrong password")."</div>";
+        elseif (!$account->active) { //account is disabled
+          echo "<div id='sysmessage'>" . 
            _("Account is not yet activated — check your spam for the " .
              "verification e-mail <small style='font-size: small'>" .
              "(subject: 'Confirm your account - Penn Book Bazaar')</small>") .
            "</div>";
-    }
-  }
-} else {
-  $email = $_COOKIE["ocEmail"];
-  if ($email!="") $rememberme = "1";
-}
-echo $beg;
-?>
+        }
+      }
+    } else {
+      $email = $_COOKIE["ocEmail"];
+      if ($email!="") $rememberme = "1";
+    } 
+    echo $beg;
+  ?>
   <h4> Welcome - Login </h4>
 <?php 
 $is_recover_page = 

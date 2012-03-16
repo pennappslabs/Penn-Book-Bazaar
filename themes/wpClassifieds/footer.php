@@ -1,5 +1,6 @@
 </div>
 
+<!-- sidebar has to be in footer.php because otherwise it won't be inclduded everywhere-->
 <div class="grid_4" id="sidebar">
   <ul id="sidebar_widgeted">
   <?php getSideBar("<li class='widget widget_recent_entries'><div class='whitebox'>","</div></li>");?>

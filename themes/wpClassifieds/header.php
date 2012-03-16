@@ -40,5 +40,5 @@
 		  </div>
     </div>
     <div class="clear"></div>
-       <div class="grid_8" id="content_main">
+    <div class="grid_8" id="content_main">
    
