@@ -4,38 +4,34 @@ require_once('includes/header.php');
 if (file_exists(SITE_ROOT.'/themes/'.THEME.'/index.php')){//index from the theme!
 	require_once(SITE_ROOT.'/themes/'.THEME.'/index.php'); 
 }
-else{//default not found in theme}
-	
+
+if ($advs) echo '<div class="category">'.advancedSearchForm().'</div>';
+
+if(isset($categoryName)&&isset($categoryDescription)){
+  if (isset($location))
+      $locationtitle = " - ".getLocationName($location);
 ?>
-	<?php if ($advs) echo '<div class="category">'.advancedSearchForm().'</div>';?>
-	
-	<?php if(isset($categoryName)&&isset($categoryDescription)){
-    if (isset($location)) $locationtitle = " - ".getLocationName($location);
-    ?>
 	<div class="category">
-	    <h1><?php echo $categoryName.$locationtitle;?></h1> 
+	  <h1><?php echo $categoryName.$locationtitle;?></h1> 
 		<p>
-			 <?php echo $categoryDescription;?>
-			 <a title="<?php echo _("Post Ad in").' '.$categoryName;?>" href="<?php echo SITE_URL.newURL();?>"><?php echo _("Post book in").' '.$categoryName;?></a> 
+		  <?php echo $categoryDescription;?>
+		  <a title="<?php echo _("Post Ad in").' '.$categoryName;?>" href="<?php echo SITE_URL.newURL();?>"><?php echo _("Post book in").' '.$categoryName;?></a> 
 		</p>
 	</div>
-	<?php }?>
+<?php }?>
 
 <div class="item">
 <?php 
 	if ($resultSearch0){
 	foreach ( $resultSearch as $row ){
-		$idPost=$row['idPost'];
-		$postType=$row['type'];
-		$postTypeName=getTypeName($postType);
-		$postTitle=$row['title'];
+		$idPost=$row['idPost']; $postType=$row['type'];
+		$postTypeName=getTypeName($postType); $postTitle=$row['title'];
 		$postPrice=$row['price'];
 		$postDesc= substr(strip_tags(html_entity_decode($row['description'], ENT_QUOTES, CHARSET)), 0, 200)."...";
 		$category=$row['category'];//real category name
 		$fcategory=$row['fcategory'];//frienfly name category
 		$idCategoryParent=$row['idCategoryParent'];
-		$fCategoryParent=$row['parent'];
-		$postPassword=$row['password'];
+		$fCategoryParent=$row['parent']; $postPassword=$row['password'];
 		
 		if ($insertDate!=setDate($row['insertDate'])){
 			$insertDate=setDate($row['insertDate']);
@@ -84,12 +80,12 @@ else{//default not found in theme}
 		<?php 
 	}
 }//end if check there's results
-else echo "<p>"._("Nothing found")."</p>";
+else echo "<p>"._("No results found.")."</p>";
 ?>
 </div>
 	<div class="item">&nbsp;<br />
 	<?php //page numbers
-		if ($total_pages>1){
+		if ($total_pages > 1){
 			
 			//if is a search
 			if (strlen(cG("s"))>=MIN_SEARCH_CHAR) $search="&s=".cG("s");

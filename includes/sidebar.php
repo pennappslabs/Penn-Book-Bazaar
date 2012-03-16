@@ -3,9 +3,11 @@
 //Sidebar generator
 ////////////////////////////////////////////////////////////
 
-function getSideBar($beg,$end){//generates the sidebar reading from the config.php
+function getSideBar($beg,$end) {//generates the sidebar reading from the config.php
   $widgets=explode(",",SIDEBAR);
   foreach ($widgets as $widget){
+    // $widget is one of the sb_functions
+    // sb_acount, sb_search, sb_links
     $widget="sb_".$widget;
     echo $widget($beg,$end);
   }
@@ -149,14 +151,12 @@ function sb_links($beg,$end){//links sitemap
   ?>
     <h4><?php echo _("Menu");?>:</h4>
     <ul>
-      <?php if(FRIENDLY_URL) {?>
-           
-      <?php }else { ?>
+      <?php if(!FRIENDLY_URL) {?>
         <li><a href="<?php echo SITE_URL;?>/content/search.php"><?php echo _("Advanced Search");?></a></li>
         <li><a href="<?php echo SITE_URL;?>/content/site-map.php"><?php echo _("Sitemap");?></a></li>
         <li><a href="<?php echo SITE_URL;?>/content/privacy.php"><?php echo _("Privacy Policy");?></a></li>
       <?php } ?>
-       <li><a href="<?php echo SITE_URL;?>/content/faq.php"><?php echo _("Frequently Asked Questions");?></a></li>
+       <li><a href="<?php echo SITE_URL;?>/content/faq.php"><?php echo _("FAQs");?></a></li>
          <li><a href="<?php echo SITE_URL;?>/content/terms.php"><?php echo _("Terms of Use");?></a></li>
           <li><a href="<?php echo SITE_URL."/".u(_("Privacy Policy"));?>.htm"><?php echo _("Privacy Policy");?></a></li>
           <li><a href="<?php echo SITE_URL;?>/content/acknowledgments.php"><?php echo _("Acknowledgments");?></a></li>
@@ -213,7 +213,7 @@ function sb_categories_cloud($beg,$end){// popular categories
 function sb_account($beg,$end){
   $account = Account::createBySession();
   if ($account->exists){
-    $ret='<h4>'._("").' '.$account->name.': Account</h4>';
+    $ret='<h4>'._("Hello, ").' '.$account->name.'</h4>';
     $ret.= '<li><a href="'.SITE_URL.'/publish.htm">'._("Post a New Book!").'</a></li>';
     $ret.= '<li><a href="'.accountURL().'">'._("My Posts").'</a></li>';
     $ret.= '<li><a href="'.accountSettingsURL().'">'._("Change My Password").'</a></li>';

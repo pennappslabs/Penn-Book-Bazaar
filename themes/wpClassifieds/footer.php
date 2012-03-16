@@ -1,6 +1,6 @@
-  </div>
-  
- <div class="grid_4" id="sidebar">
+</div>
+
+<div class="grid_4" id="sidebar">
  
       <ul id="sidebar_widgeted">
       <?php getSideBar("<li class='widget widget_recent_entries'><div class='whitebox'>","</div></li>");?>
@@ -14,14 +14,14 @@
 <div class="grid_12" id="footer">
     <ul class="pages">
 	    <?php if(FRIENDLY_URL) {?>
-	 	     <li><a href="<?php echo SITE_URL;?>/content/faq.php"><?php echo _("Frequently Asked Questions");?></a></li>
+	 	     <li><a href="<?php echo SITE_URL;?>/content/faq.php"><?php echo _("FAQS");?></a></li>
 		    <li><a href="<?php echo SITE_URL."/".u(_("Privacy Policy"));?>.htm"><?php echo _("Privacy Policy");?></a></li>
 		    
 		         <li><a href="<?php echo SITE_URL;?>/content/terms.php"><?php echo _("Terms of Use");?></a></li>
 		          <li><a href="<?php echo SITE_URL;?>/content/acknowledgments.php"><?php echo _("Acknowledgments");?></a></li>
 		     
 	    <?php }else { ?>
-	    	     <li><a href="<?php echo SITE_URL;?>/content/faq.php"><?php echo _("Frequently Asked Questions");?></a></li>
+	    	     <li><a href="<?php echo SITE_URL;?>/content/faq.php"><?php echo _("FAQS");?></a></li>
 		         <li><a href="<?php echo SITE_URL;?>/content/terms.php"><?php echo _("Terms of Use");?></a></li>
 		          <li><a href="<?php echo SITE_URL."/".u(_("Privacy Policy"));?>.htm"><?php echo _("Privacy Policy");?></a></li>
 		          <li><a href="<?php echo SITE_URL;?>/content/acknowledgments.php"><?php echo _("Acknowledgments");?></a></li>
