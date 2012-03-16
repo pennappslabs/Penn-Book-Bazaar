@@ -67,10 +67,8 @@ function getItemTitle() {
     <?php }?>
 </head>
 <body>
-
 <?php
-require_once(SITE_ROOT.'/themes/'.THEME.'/header.php');
-
+  require_once(SITE_ROOT.'/themes/'.THEME.'/header.php');
 ?>
 
 <!--googleoff: index-->
