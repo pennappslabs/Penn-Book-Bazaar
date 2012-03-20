@@ -3,12 +3,10 @@
 //Common header for all the themes
 ////////////////////////////////////////////////////////////
 require_once('functions.php');
-
-function getItemTitle() {
-  return $itemTitle;
-}
-
+//http://stackoverflow.com/questions/2253625/php-require-once-not-working-the-way-i-want-it-to-relative-path-issue
+require_once(dirname(__FILE__) . '/../facebook-php-sdk/src/facebook.php');
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo substr(LANGUAGE,0,2);?>" lang="<?php echo substr(LANGUAGE,0,2);?>">
 <head>
@@ -29,11 +27,7 @@ function getItemTitle() {
   <meta name="generator" content="Open Classifieds <?php echo VERSION;?>" />
   
 	<?php if (isset($type)){?>
-<!-- 
-		<link rel="stylesheet" type="text/css" href="//code.google.com/css/dev_docs.css"/> 
- -->
-	
-	<link rel="alternate" type="application/rss+xml" title="<?php echo _("Latests Ads");?> <?php echo ucwords(getTypeName($type));?> <?php echo ucwords($currentCategory);?>" href="<?php echo SITE_URL;?>/rss/?type=<?php echo $type;?>&amp;category=<?php echo $currentCategory;?>" />
+	  <link rel="alternate" type="application/rss+xml" title="<?php echo _("Latests Ads");?> <?php echo ucwords(getTypeName($type));?> <?php echo ucwords($currentCategory);?>" href="<?php echo SITE_URL;?>/rss/?type=<?php echo $type;?>&amp;category=<?php echo $currentCategory;?>" />
 	<?php }?>
 	<?php if (isset($currentCategory)){?>
 		<link rel="alternate" type="application/rss+xml" title="<?php echo _("Latests Ads");?> <?php echo ucwords($currentCategory);?>" href="<?php echo SITE_URL;?>/rss/?category=<?php echo $currentCategory;?>" />

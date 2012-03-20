@@ -235,7 +235,6 @@ function sb_account($beg,$end){
       } else {
         // search for their name based on their FB name
         $user_profile = $facebook->api('/me');
-        echo "<h1>".$user_profile['name']."</h1>";
 
         // if not found, create a new account for them with their new credentials
         //header("Location: register.htm");
@@ -266,29 +265,38 @@ function sb_account($beg,$end){
     } else {
       $email = $_COOKIE["ocEmail"];
       if ($email!="") $rememberme = "1";
-    } 
+    }
     echo $beg;
-  ?>
-  <h4> Welcome - Login </h4>
-<?php 
-$is_recover_page = 
-  ($_SERVER['REQUEST_URI'] == "/textbook/forgot-my-password.htm") ? 
-  true : false;
 ?>
-  <div id='fblogin'><fb:login-button></fb:login-button></div>
-   <form <?php if ($is_recover_page){echo 'class="hidden" ';} ?>id="loginForm" name="loginForm" action="" method="post" onsubmit="return checkForm(this);">
-  <p><label for="email"><?php echo _("Penn Email Address")?>:<br />
-  <input type="text" name="email" id="email" maxlength="145" value="<?php echo $email;?>" onblur="validateEmail(this);" lang="false" /></label></p>
-  <p><label for="password"><?php echo _("Password")?>:<br />
-  <input type="password" name="password" id="password" maxlength="<?php PASSWORD_SIZE?>" onblur="validateText(this);" lang="false" /></label></p>
-  <p><label for="rememberme"><input type="checkbox" name="rememberme" id="rememberme" value="1" <?php if ($rememberme == "1") echo "checked ";?> style="width: 10px;" /><small><?php echo _("Remember me on this computer");?></small></label></p>
-  <p><input name="submit" id="submit" type="submit" value="<?php echo _("Login")?>" /></p>
-  <br />
-  <p><?php echo '<a href="'.accountRecoverPasswordURL().'">'._("Forgot My Password").'</a>';?><br />
-  <?php echo _("If you do not have an account") .' '.'<a href="'.accountRegisterURL().'">'._("Register").'</a>';?></p>
-</form>
+    <h4> Welcome - Login </h4>
+    <?php 
+      $is_recover_page = ($_SERVER['REQUEST_URI'] == "/textbook/forgot-my-password.htm");
+    ?>
+    <div id='fblogin'><fb:login-button></fb:login-button></div>
+    <form <?php if ($is_recover_page){echo 'class="hidden" ';} ?>id="loginForm" name="loginForm" action="" method="post" onsubmit="return checkForm(this);">
+      <p>
+        <label for="email"><?php echo _("Penn Email Address")?>:<br/>
+        <input type="text" name="email" id="email" maxlength="145" value="<?php echo $email;?>" onblur="validateEmail(this);" lang="false" /></label>
+      </p>
+      <p>
+        <label for="password"><?php echo _("Password")?>:<br/>
+        <input type="password" name="password" id="password" maxlength="<?php PASSWORD_SIZE?>" onblur="validateText(this);" lang="false" /></label>
+      </p>
+      <p>
+        <label for="rememberme"><input type="checkbox" name="rememberme" id="rememberme" value="1" <?php if ($rememberme == "1") echo "checked ";?> style="width: 10px;" />
+        <small><?php echo _("Remember me on this computer");?></small></label>
+      </p>
+      <p>
+        <input name="submit" id="submit" type="submit" value="<?php echo _("Login")?>" />
+      </p>
+      <br/>
+      <p>
+        <?php echo '<a href="'.accountRecoverPasswordURL().'">'._("Forgot My Password").'</a>';?><br/>
+        <?php echo _("If you do not have an account") .' '.'<a href="'.accountRegisterURL().'">'._("Register").'</a>';?>
+      </p>
+    </form>
 <?php
-echo $end;
+    echo $end;
   }
 }
 
