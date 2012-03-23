@@ -45,6 +45,8 @@ if (mysql_num_rows($result)){
         } else echo '<a href="'.SITE_URL.'/manage/?post='.$post_id.'&amp;pwid='.$postPassword.'&amp;action=confirm" target="_blank">'._("Confirm").'</a>';
     	echo '</p>';
     }
+} else {
+  echo '<p>There appears to be nothing here.<p>';
 }
 ?>
 </div>

@@ -218,62 +218,21 @@ function sb_account($beg,$end){
     $ret.= '<div><a href="'.accountURL().'">'._("My Posts").'</a></div>';
     $ret.= '<div><a href="'.accountSettingsURL().'">'._("Change My Password").'</a></div>';
     $ret.= '<div><a href="'.accountLogoutURL().'">'._("Logout").'</a></div>';
+    $ret.= '<a onclick="FB.logout();">Logout from FB</a>';
     return $beg.$ret.$end;
   } else {
-    $facebook = new Facebook(array(
-      'appId'  => '160063330776916',
-      'secret' => '12a83f54102db21f68cdf0fb52dcf2ff',
-    ));
-    $user = $facebook->getUser();
-
-    // someone is trying to log in with FB
-    if ($user) {
-      $account = new Account($user);
-      if ($account->FBlogOn($user)) {
-        header("Location: ".accountURL());
-        die();
-      } else {
-        // search for their name based on their FB name
-        $user_profile = $facebook->api('/me');
-
-        // if not found, create a new account for them with their new credentials
-        //header("Location: register.htm");
-      }
-    } else if ($_POST){
-      $email = cP('email');
-      $password = cP('password');
-      $rememberme = cP('rememberme');
-      if ($rememberme == "1") $rememberme = true;
-      else $rememberme = false;
-  
-      $account = new Account($email);
-      if ($account->logOn($password,$rememberme,"ocEmail")){
-        return sb_account($beg,$end);
-      } else {
-        if (!$account->exists)//account not found by email
-          echo "<div id='sysmessage'>"._("Account not found")."</div>";
-        elseif (!$account->status_password) //wrong password
-          echo "<div id='sysmessage'>"._("Wrong password")."</div>";
-        elseif (!$account->active) { //account is disabled
-          echo "<div id='sysmessage'>" . 
-           _("Account is not yet activated — check your spam for the " .
-             "verification e-mail <small style='font-size: small'>" .
-             "(subject: 'Confirm your account - Penn Book Bazaar')</small>") .
-           "</div>";
-        }
-      }
-    } else {
-      $email = $_COOKIE["ocEmail"];
-      if ($email!="") $rememberme = "1";
-    }
     echo $beg;
 ?>
     <h4> Welcome - Login </h4>
     <?php 
       $is_recover_page = ($_SERVER['REQUEST_URI'] == "/textbook/forgot-my-password.htm");
     ?>
-    <div id='fblogin'><fb:login-button></fb:login-button></div>
-    <form <?php if ($is_recover_page){echo 'class="hidden" ';} ?>id="loginForm" name="loginForm" action="" method="post" onsubmit="return checkForm(this);">
+    <div id='fblogin'>
+      <fb:login-button id='fb_button'>Login with Facebook</fb:login-button>
+    </div>
+    <form <?php if ($is_recover_page){echo 'class="hidden" ';} ?>id="loginForm" name="loginForm" action="<?php echo accountLoginURL() ?>" method="post" onsubmit="return checkForm(this);">
+        <?php //if ($_GET['error']
+          //echo $_GET['error']; ?>
       <p>
         <label for="email"><?php echo _("Penn Email Address")?>:<br/>
         <input type="text" name="email" id="email" maxlength="145" value="<?php echo $email;?>" onblur="validateEmail(this);" lang="false" /></label>

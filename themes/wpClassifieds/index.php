@@ -113,12 +113,6 @@ else echo "<p>"._("Nothing found")."</p>";
 else {//home page carousel and categories?>
   <div id="welcome">
     <h1> Welcome to the Penn Book Bazaar!</h1>
-    <?php
-      $account = Account::createBySession();
-	    if (!$account->exists){
-	    ?>
-      <p> To post or view a new book, you must <a href="<?php echo SITE_URL; ?>/login.htm">login</a> or <a href="<?php echo SITE_URL; ?>/register.htm">register for an account</a>. </p>
-    <?php } ?>
     <p>
       <strong>COMPETITIVE PRICES</strong> buy at market rates and avoid middleman costs<br/>
       <strong>PROTECT THE ENVIRONMENT</strong>  reuse books and cut shipping-generated greenhouse gases<br/>

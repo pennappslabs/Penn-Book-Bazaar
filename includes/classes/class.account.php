@@ -201,14 +201,11 @@ class Account {
   }
     
 	//Logout
-	public static function logOut()
-    {
-		if(isset($_SESSION["ocAccount"]))
-        {
+	public static function logOut() {
+		if(isset($_SESSION["ocAccount"])) {
 			$_SESSION["ocAccount"] = null;
-			
 			unset($_SESSION["ocAccount"]);
-		}
+    }
 	}
 
     //Return account's activation token

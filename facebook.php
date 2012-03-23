@@ -23,12 +23,15 @@ if ($user) {
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
   <body>
     <?php if (isset($user_profile)) { ?>
+      <a href="javascript:FB.logout();">Logout</a><br/>
       Your user profile is 
       <pre>            
         <?php print htmlspecialchars(print_r($user_profile, true)) ?>
         <?php print htmlspecialchars(print_r($user, true)) ?>
       </pre> 
     <?php } else { ?>
+      <a onclick="FB.login()">testing</a><br/>
+      <a href="javascript:FB.login()">testing again</a>
       <fb:login-button></fb:login-button>
     <?php } ?>
     <div id="fb-root"></div>

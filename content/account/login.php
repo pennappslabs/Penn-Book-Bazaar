@@ -1,87 +1,56 @@
 <?php
   require_once('../../includes/header.php');
-  require '../../facebook-php-sdk/src/facebook.php';
 
-  $account = Account::createBySession();
-
-  if ($account->exists){
-    header("Location: ".accountURL());
-    die();
+  if (isset($_GET['FB'])) {
+    $_SESSION['FB_session'] = true;
   }
-?>
-
-<h2><?php echo _("Login")?></h2>
-
-<?php
-  $facebook = new Facebook(array(
-    'appId'  => '160063330776916',
-    'secret' => '12a83f54102db21f68cdf0fb52dcf2ff',
-  ));
-  $user = $facebook->getUser();
-
   // someone is trying to log in with FB
-  if ($user) {
+  if ($_SESSION['FB_session']) {
+    $facebook = new Facebook(array(
+      'appId'  => FB_APP_ID,
+     'secret' => FB_APP_SECRET,
+    ));
+    $user = $facebook->getUser();
     $account = new Account($user);
     if ($account->FBlogOn($user)) {
-      header("Location: ".accountURL());
+      header('Location:'. $_SERVER['HTTP_REFERER']);
       die();
     } else {
       // search for their name based on their FB name
       $user_profile = $facebook->api('/me');
-      echo "<h1>".$user_profile['name']."</h1>";
-
       // if not found, create a new account for them with their new credentials
       //header("Location: register.htm");
     }
-  } else if ($_POST){
+  } else if ($_POST) {
+    echo "help";
     $email = cP('email');
     $password = cP('password');
     $rememberme = cP('rememberme');
-    if ($rememberme == "1")
-      $rememberme = true;
-    else
-      $rememberme = false;
+    if ($rememberme == "1") $rememberme = true;
+    else $rememberme = false;
   
     $account = new Account($email);
     if ($account->logOn($password,$rememberme,"ocEmail")){
-      header("Location: ".accountURL());
+      header('Location:'.$_SERVER['HTTP_REFERER']);
       die();
-    }
-    else {
-      if (!$account->exists) {
-        echo "<div id='sysmessage'>"._("Account not found")."</div>";//account not found by emaili
+    } else {
+      if (!$account->exists) {//account not found by email
+        header('Location:'.$_SERVER['HTTP_REFERER'] . '?error=Account+not+found');
+        die();
+      } elseif (!$account->status_password) { //wrong password
+        header('Location:'. $_SERVER['HTTP_REFERER']. '?error=Wrong+password');
+        die();
+      } elseif (!$account->active) { //account is disabled
+        header('Location:'.$_SERVER['HTTP_REFERER']. '?error=Account+is+not+yet+activated');
+        die();
       }
-      elseif (!$account->status_password)
-        echo "<div id='sysmessage'>"._("Wrong password")."</div>";//wrong password
-      elseif (!$account->active)
-        echo "<div id='sysmessage'>"._("Account is disabled")."</div>";//account is disabled
     }
   } else {
+    echo "what the fuck<br/>";
+    echo 'event:' . cp('email');
     $email = $_COOKIE["ocEmail"];
-    if ($email!="")
-      $rememberme = "1";
+    if ($email!="") $rememberme = "1";
+    header('Location:'.$_SERVER['HTTP_REFERER']);
   }
-?>
-<div>
-  <div id='fblogin'>
-    <fb:login-button></fb:login-button>
-  </div>
-  <div id='OR' style='font-size: 20px; padding-left: 10px; padding-bottom: 10px; padding-top: 10px;'>OR</div>
-  
-  <form id="loginForm" name="loginForm" title="bob" action="" method="post" 
-    onsubmit="return checkForm(this);">
-  	<p><label for="email"><?php echo _("Penn Email Address")?>:<br />
-      <input type="text" name="email" id="email" maxlength="145" value="<?php echo $email;?>" onblur="validateEmail(this);" lang="false" /></label></p>
-  	<p><label for="password"><?php echo _("Password")?>:<br />
-      <input type="password" name="password" id="password" maxlength="<?php PASSWORD_SIZE?>" onblur="validateText(this);" lang="false" /></label></p>
-  	<p><label for="rememberme"><input type="checkbox" name="rememberme" id="rememberme" value="1" <?php if ($rememberme == "1") echo "checked ";?> style="width: 10px;" /><small><?php echo _("Remember me on this computer");?></small></label></p>
-  	<p><input name="submit" id="submit" type="submit" value="<?php echo _("Submit")?>" /></p>
-      <br />
-  	<p><?php echo '<a href="'.accountRecoverPasswordURL().'">'._("Forgot My Password").'</a>';?></p>
-  </form>
-</div>
-<br/>
-<h3><?php echo _("If you do not have an account") .' '.'<a href="'.accountRegisterURL().'">'._("Register").'</a>';?></h3>
-<?php
-  require_once('../../includes/footer.php');
+
 ?>
