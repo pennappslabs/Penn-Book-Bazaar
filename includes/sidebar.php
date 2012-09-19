@@ -242,6 +242,7 @@ if ($_POST){
            _("Account is not yet activated — check your spam for the " .
              "verification e-mail <small style='font-size: small'>" .
              "(subject: 'Confirm your account - Penn Book Bazaar')</small>") .
+             " - <a href=\"".accountResendEmailURL()."\">Resend confirmation email</a>".
            "</div>";
     }
   }

@@ -4,7 +4,7 @@ ErrorDocument 404 /textbookcontent/404.php
 Options ExecCGI Includes IncludesNOEXEC SymLinksIfOwnerMatch -Indexes
 <IfModule mod_rewrite.c>
 RewriteEngine on
-RewriteBase /CHANGE/ME/TO/CORRECT/PATH # Change this
+RewriteBase /Penn-Book-Bazaar/
 RewriteRule ^([0-9]+)$ index.php?page=$1 [L]
 RewriteRule ^install/$ install/ [L]
 RewriteRule ^admin/$ admin/index.php [L]
@@ -23,6 +23,7 @@ RewriteRule ^register.htm content/account/register.php [L]
 RewriteRule ^login.htm content/account/login.php [L]
 RewriteRule ^logout.htm content/account/logout.php [L]
 RewriteRule ^forgot-my-password.htm content/account/recoverpassword.php [L]
+RewriteRule ^resend-email.htm content/account/resendemail.php [L]
 RewriteRule ^settings.htm content/account/settings.php [L]
 RewriteRule ^my-account/$ content/account/index.php [L]
 RewriteRule ^offer/(.+)/(.+)/$ index.php?category=$1&type=0&location=$2 [L]

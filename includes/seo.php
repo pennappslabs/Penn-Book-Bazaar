@@ -282,6 +282,13 @@ function accountRecoverPasswordURL(){//returns de url for account password recov
    return $url;
 }
 ////////////////////////////////////////////////////////////
+function accountResendEmailURL(){//returns de url for account password recovery
+   if(FRIENDLY_URL) $url=SITE_URL.'/resend-email.htm';
+   else $url=SITE_URL.'/content/account/resendemail.php';
+   
+   return $url;
+}
+////////////////////////////////////////////////////////////
 function accountSettingsURL(){//returns de url for account settings
    if(FRIENDLY_URL) $url=SITE_URL.'/'.u(_("Settings")).'.htm';
    else $url=SITE_URL.'/content/account/settings.php';

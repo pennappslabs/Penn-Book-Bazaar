@@ -5,9 +5,9 @@ Love,
 PennApps Labs
 
 ## Set-Up ##
-1. Move `includes/config.php.default` to `includes/config.php` and fix the databse info in said file. Might have to `grep` for `/home5/pennuaor/` to fix any file references.
-1. Similarly, move `.htaccess.default` to `.htaccess` and change the `RewriteBase` line to be the correct base URL.
-
+1. Move `includes/config.php.default` to `includes/config.php` and fix the database info in said file. Might have to `grep` for `/home5/pennuaor/` to fix any file references.
+2. Similarly, move `.htaccess.default` to `.htaccess` and change the `RewriteBase` line to be the correct base directory, relative to your html root. 
+3. Use the sample db dump to populate the database you pointed the config file to.
 
 ## OpenClassifieds 1.7.0.1 ##
     Release date:   05/07/2010
