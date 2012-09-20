@@ -222,7 +222,7 @@ function sb_account($beg,$end){
   }
   else {
   
-if ($_POST){
+if ($_POST && !isset($_POST["agree_terms"])){
   $email = cP('email');
   $password = cP('password');
   $rememberme = cP('rememberme');
@@ -242,6 +242,7 @@ if ($_POST){
            _("Account is not yet activated — check your spam for the " .
              "verification e-mail <small style='font-size: small'>" .
              "(subject: 'Confirm your account - Penn Book Bazaar')</small>") .
+             " - <a href=\"".accountResendEmailURL()."\">Resend confirmation email</a>".
            "</div>";
     }
   }
