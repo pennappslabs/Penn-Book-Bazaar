@@ -4,7 +4,7 @@ ErrorDocument 404 /textbookcontent/404.php
 Options ExecCGI Includes IncludesNOEXEC SymLinksIfOwnerMatch -Indexes
 <IfModule mod_rewrite.c>
 RewriteEngine on
-RewriteBase /Penn-Book-Bazaar/
+RewriteBase /CHANGE/ME/TO/CORRECT/PATH # Change this
 RewriteRule ^([0-9]+)$ index.php?page=$1 [L]
 RewriteRule ^install/$ install/ [L]
 RewriteRule ^admin/$ admin/index.php [L]

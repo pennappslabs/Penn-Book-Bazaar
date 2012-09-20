@@ -282,7 +282,7 @@ function accountRecoverPasswordURL(){//returns de url for account password recov
    return $url;
 }
 ////////////////////////////////////////////////////////////
-function accountResendEmailURL(){//returns de url for account password recovery
+function accountResendEmailURL(){ //returns the url for resending confirmation email
    if(FRIENDLY_URL) $url=SITE_URL.'/resend-email.htm';
    else $url=SITE_URL.'/content/account/resendemail.php';
    

@@ -222,7 +222,7 @@ function sb_account($beg,$end){
   }
   else {
   
-if ($_POST){
+if ($_POST && !isset($_POST["agree_terms"])){
   $email = cP('email');
   $password = cP('password');
   $rememberme = cP('rememberme');
@@ -237,7 +237,7 @@ if ($_POST){
       echo "<div id='sysmessage'>"._("Account not found")."</div>";
     elseif (!$account->status_password) //wrong password
       echo "<div id='sysmessage'>"._("Wrong password")."</div>";
-    elseif (!$account->active) { //account is disabled
+    elseif (!$account->active ) { //account is disabled
       echo "<div id='sysmessage'>" . 
            _("Account is not yet activated — check your spam for the " .
              "verification e-mail <small style='font-size: small'>" .
