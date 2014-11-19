@@ -4,7 +4,7 @@ require_once('../includes/header.php');
 
 
 <h2>
-	Terms and Conditions of Use 
+	Terms and Conditions of Use
 </h2>
 
 <h3>
@@ -12,7 +12,7 @@ require_once('../includes/header.php');
 </h3>
 
 <p>
-By accessing this web site, you are agreeing to be bound by these web site Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this web site are protected by applicable copyright and trade mark law. 
+By accessing this web site, you are agreeing to be bound by these web site Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this web site are protected by applicable copyright and trade mark law.
 </p>
 
 <h3>
@@ -20,7 +20,7 @@ By accessing this web site, you are agreeing to be bound by these web site Terms
 </h3>
 
 <p>
-We reserve the right, at our sole discretion, to change, modify or otherwise alter these terms and conditions at any time. Such modifications shall become effective immediately. You bear the responsibility of reviewing this agreement on a regular basis to keep yourself apprised of any changes. You can find the most recent version of the Terms and Conditions of Use at: http://pennua.org/textbook/terms.htm
+We reserve the right, at our sole discretion, to change, modify or otherwise alter these terms and conditions at any time. Such modifications shall become effective immediately. You bear the responsibility of reviewing this agreement on a regular basis to keep yourself apprised of any changes. You can find the most recent version of the Terms and Conditions of Use at: http://pennbookbazaar.com/terms.htm
 </p>
 
 <h3>
@@ -39,7 +39,7 @@ We reserve the right, at our sole discretion, to change, modify or otherwise alt
 
 <p>
 In no event shall Penn Book Bazaar or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising from the use or inability to use the materials on Penn Book Bazaar's Internet site, even if Penn Book Bazaar or a Penn Book Bazaar authorized representative has been notified orally or in writing of the possibility of such damage. </p>
-		
+
 <h3>
 	5. LIABILITY
 </h3>
@@ -51,7 +51,7 @@ In no event shall Penn Book Bazaar or its suppliers be liable for any damages (i
 	6. REVISIONS AND ERRATA
 </h3>
 
-<p>The materials appearing on Penn Book Bazaar's web site could include technical, typographical, or photographic errors. Penn Book Bazaar does not warrant that any of the materials on its web site are accurate, complete, or current. Penn Book Bazaar may make changes to the materials contained on its web site at any time without notice. Penn Book Bazaar does not, however, make any commitment to update the materials. 
+<p>The materials appearing on Penn Book Bazaar's web site could include technical, typographical, or photographic errors. Penn Book Bazaar does not warrant that any of the materials on its web site are accurate, complete, or current. Penn Book Bazaar may make changes to the materials contained on its web site at any time without notice. Penn Book Bazaar does not, however, make any commitment to update the materials.
 </p>
 
 
@@ -70,30 +70,30 @@ In no event shall Penn Book Bazaar or its suppliers be liable for any damages (i
 		Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.
 	</li>
 	<li>
-		We will collect and use of personal information solely with the objective of fulfilling those purposes specified by us and for other compatible purposes, unless we obtain the consent of the individual concerned or as required by law.		
+		We will collect and use of personal information solely with the objective of fulfilling those purposes specified by us and for other compatible purposes, unless we obtain the consent of the individual concerned or as required by law.
 	</li>
 	<li>
-		We will only retain personal information as long as necessary for the fulfillment of those purposes. 
+		We will only retain personal information as long as necessary for the fulfillment of those purposes.
 	</li>
 	<li>
-		We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned. 
+		We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned.
 	</li>
 	<li>
-		Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should be accurate, complete, and up-to-date. 
+		Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should be accurate, complete, and up-to-date.
 	</li>
 	<li>
 		We will protect personal information by reasonable security safeguards against loss or theft, as well as unauthorized access, disclosure, copying, use or modification.
 	</li>
 	<li>
-		We will make readily available to customers information about our policies and practices relating to the management of personal information. 
+		We will make readily available to customers information about our policies and practices relating to the management of personal information.
 	</li>
 </ul>
 
 <p>
-	We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained. 
-</p>		
+	We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained.
+</p>
 
-		
+
 
 <?php
 require_once('../includes/footer.php');

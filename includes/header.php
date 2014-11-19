@@ -14,25 +14,25 @@ function getItemTitle() {
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>" />
   <title><?php echo $html_title; ?></title>
-  <?php    
+  <?php
     echo "<!-- Specify information for Facebook Share -->
   		  <meta property='og:title' content='";
   		  echo $html_title;
   		  echo "'>";
   ?>
   <meta property="og:description" content="Posted a textbook for sale on Penn Book Bazaar. View the ad by clicking this link.">
-  <meta property="og:image" content="http://pennua.org/textbook/pbbthumbfb.jpg">
-  
+  <meta property="og:image" content="http://pennbookbazaar.com/pbbthumbfb.jpg">
+
   <meta name="title" content="<?php echo $html_title;?>" />
   <meta name="description" content="<?php echo $html_description;?>" />
-  <meta name="keywords" content="<?php echo $html_keywords;?>" />		
+  <meta name="keywords" content="<?php echo $html_keywords;?>" />
   <meta name="generator" content="Open Classifieds <?php echo VERSION;?>" />
-  
+
 	<?php if (isset($type)){?>
-<!-- 
-		<link rel="stylesheet" type="text/css" href="//code.google.com/css/dev_docs.css"/> 
+<!--
+		<link rel="stylesheet" type="text/css" href="//code.google.com/css/dev_docs.css"/>
  -->
-	
+
 	<link rel="alternate" type="application/rss+xml" title="<?php echo _("Latests Ads");?> <?php echo ucwords(getTypeName($type));?> <?php echo ucwords($currentCategory);?>" href="<?php echo SITE_URL;?>/rss/?type=<?php echo $type;?>&amp;category=<?php echo $currentCategory;?>" />
 	<?php }?>
 	<?php if (isset($currentCategory)){?>

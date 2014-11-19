@@ -8,4 +8,4 @@ Disallow: /install/
 Disallow: /contact/
 Disallow: /?s=
 Allow: /rss/$
-Sitemap: http://pennua.org/textbook/sitemap.xml.gz
+Sitemap: http://pennbookbazaar.com/sitemap.xml.gz

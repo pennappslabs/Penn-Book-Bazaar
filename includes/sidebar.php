@@ -26,60 +26,60 @@ function sb_search($beg,$end){//serach form
     $search="<h4>Quick Search</h4>";
     $search.= "<form method=\"get\" action=\"".SITE_URL."\">
       <p><input name=\"s\" id=\"s\" maxlength=\"15\" title=\""._("Search")."\"
-        onblur=\"this.value=(this.value=='') ? '$ws' : this.value;\" 
-        onfocus=\"this.value=(this.value=='$ws') ? '' : this.value;\" 
+        onblur=\"this.value=(this.value=='') ? '$ws' : this.value;\"
+        onfocus=\"this.value=(this.value=='$ws') ? '' : this.value;\"
         value=\"$ws\" type=\"text\" /></p>";
-    
+
     if(isset($categoryName)) $search.='<p><input type="hidden" name="category" value="'.$currentCategory.'" /></p>';
     if(isset($location)) $search.='<p><input type="hidden" name="location" value="'.getLocationFriendlyName($location).'" /></p>';
-    
+
     $search.='</form>';
     $search.="Can't find what you need? Try ";
     $search.=advancedSearchURL();
     $search.="!";
-            
+
   return $beg.$search.$end;
 }
 ////////////////////////////////////////////////////////////
 function sb_locations($beg,$end){//locations list (state or city)
   if (LOCATION){
     global $location,$currentCategory,$selectedCategory;
-       
+
     if (isset($location)) {
       $currentlocation = getLocationName($location);
       $locationparent = getLocationParent($location);
     } else $locationparent = 0;
-    
+
     $locationcontent = "<h4>"._("Location")."</h4>";
-    
+
     if ($locationparent != 0) $locationcontent .= "<h4><a href=\"".SITE_URL.catURL($currentCategory,$selectedCategory,getLocationFriendlyName($locationparent))."\">".getLocationName($locationparent)."</a> / $currentlocation</h4>";
     elseif (isset($location)) {
       $locationroot = LOCATION_ROOT;
       if ($locationroot == "") $locationroot = _("Home");
       $locationcontent .= "<h4><a href=\"".SITE_URL.catURL($currentCategory,$selectedCategory,$_unused_)."\">$locationroot</a> / $currentlocation</h4>";
     }
-    
+
     if (!isset($location)) $location = 0;
     global $ocdb;
     $query = "select idLocation, name, friendlyName from ".TABLE_PREFIX."locations where idLocationParent=$location order by name";
     $result=$ocdb->getRows($query);
-    
+
     $i = 0;
     $q = count($result);
     $z = round($q/2);
-  
+
     foreach ($result as $location_row ) {
       if ($i==0 or $i==$z) $locationcontent .= "<div class=\"columns\"><ul>";
-      
+
       $locationcontent .= "<li><a href=\"".SITE_URL.catURL($currentCategory,$selectedCategory,$location_row["friendlyName"])."\">".$location_row["name"]."</a></li>";
-      
+
       if ($i==($z-1) or $i==($q-1)) $locationcontent .= "</ul></div>";
-  
+
       $i++;
     }
-    
+
     $locationcontent .= "<div class=\"clear\" />";
-    
+
     return $beg.$locationcontent.$end;
   }
 }
@@ -123,7 +123,7 @@ function sb_item_tools($beg,$end){//utils for admin
       <li><a href="<?php echo itemManageURL();?>?post=<?php echo $idItem;?>&amp;pwd=<?php echo $itemPassword;?>&amp;action=edit">
         <?php echo _("Edit");?></a>
       </li>
-      <li><a onClick="return confirm('<?php echo _("Deactivate");?>?');" 
+      <li><a onClick="return confirm('<?php echo _("Deactivate");?>?');"
         href="<?php echo itemManageURL();?>?post=<?php echo $idItem;?>&amp;pwd=<?php echo $itemPassword;?>&amp;action=deactivate">
         <?php echo _("Deactivate");?></a>
       </li>
@@ -138,19 +138,19 @@ function sb_item_tools($beg,$end){//utils for admin
       <li><a href="<?php echo SITE_URL;?>/admin/logout.php"><?php echo _("Logout");?></a>
       </li>
     </ul>
-  <?php 
+  <?php
     echo $end;
   }
 }
 ////////////////////////////////////////////////////////////
 function sb_links($beg,$end){//links sitemap
     echo $beg;
-    
+
   ?>
     <h4><?php echo _("Menu");?>:</h4>
     <ul>
       <?php if(FRIENDLY_URL) {?>
-           
+
       <?php }else { ?>
         <li><a href="<?php echo SITE_URL;?>/content/search.php"><?php echo _("Advanced Search");?></a></li>
         <li><a href="<?php echo SITE_URL;?>/content/site-map.php"><?php echo _("Sitemap");?></a></li>
@@ -164,7 +164,7 @@ function sb_links($beg,$end){//links sitemap
       <li>Found glitches? Need help? <a href="mailto:labs@pennapps.com">Send us an email</a>!</li>
       <!--   <li><a href="<?php echo SITE_URL;?>/admin/"><?php echo _("Administrator");?></a></li> -->
     </ul>
-  <?php 
+  <?php
   echo $end;
 }
 
@@ -203,7 +203,7 @@ function sb_theme($beg,$end){//theme selector
 ////////////////////////////////////////////////////////////
 function sb_categories_cloud($beg,$end){// popular categories
   global $categoryName;
-  if(!isset($categoryName)){ 
+  if(!isset($categoryName)){
     echo $beg."<h4>"._("Categories")."</h4><br />";
     generateTagPopularCategories();
     echo $end;
@@ -214,21 +214,21 @@ function sb_account($beg,$end){
   $account = Account::createBySession();
   if ($account->exists){
     $ret='<h4>'._("").' '.$account->name.': Account</h4>';
-    $ret.= '<li><a href="http://pennua.org/textbook/publish.htm">'._("Post a New Book!").'</a></li>';
+    $ret.= '<li><a href="http://pennbookbazaar.com/publish.htm">'._("Post a New Book!").'</a></li>';
     $ret.= '<li><a href="'.accountURL().'">'._("My Posts").'</a></li>';
     $ret.= '<li><a href="'.accountSettingsURL().'">'._("Change My Password").'</a></li>';
     $ret.= '<li><a href="'.accountLogoutURL().'">'._("Logout").'</a></li>';
     return $beg.$ret.$end;
   }
   else {
-  
+
 if ($_POST && !isset($_POST["agree_terms"])){
   $email = cP('email');
   $password = cP('password');
   $rememberme = cP('rememberme');
   if ($rememberme == "1") $rememberme = true;
   else $rememberme = false;
-  
+
   $account = new Account($email);
   if ($account->logOn($password,$rememberme,"ocEmail")){
     return sb_account($beg,$end);
@@ -238,7 +238,7 @@ if ($_POST && !isset($_POST["agree_terms"])){
     elseif (!$account->status_password) //wrong password
       echo "<div id='sysmessage'>"._("Wrong password")."</div>";
     elseif (!$account->active) { //account is disabled
-      echo "<div id='sysmessage'>" . 
+      echo "<div id='sysmessage'>" .
            _("Account is not yet activated — check your spam for the " .
              "verification e-mail <small style='font-size: small'>" .
              "(subject: 'Confirm your account - Penn Book Bazaar')</small>") .
@@ -253,9 +253,9 @@ if ($_POST && !isset($_POST["agree_terms"])){
 echo $beg;
 ?>
   <h4> Welcome - Login </h4>
-<?php 
-$is_recover_page = 
-  ($_SERVER['REQUEST_URI'] == "/textbook/forgot-my-password.htm") ? 
+<?php
+$is_recover_page =
+  ($_SERVER['REQUEST_URI'] == "/textbook/forgot-my-password.htm") ?
   true : false;
 ?>
    <form <?php if ($is_recover_page){echo 'class="hidden" ';} ?>id="loginForm" name="loginForm" action="" method="post" onsubmit="return checkForm(this);">

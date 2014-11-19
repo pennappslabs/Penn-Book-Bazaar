@@ -1,6 +1,6 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>/themes/wpClassifieds/jsclass.js"></script>
-<?php 
+<?php
 //getting the title in two parts/colors
 $pos=strpos(SITE_NAME," ");
 $firstH=substr(SITE_NAME,0,$pos);//first part of the site name in green
@@ -9,10 +9,10 @@ $secondH=substr(SITE_NAME,$pos);//second part of the name un blue
 
 <div class="container_12" id="wrap">
   <div class="grid_12" id="header">
-    <div id="logo"> 
-      <h4><a href="<?php echo SITE_URL; ?>" title="<?php echo SITE_NAME; ?>"><img src="http://pennua.org/textbook/pbbbanner.png"/><!-- <span class="firstH"><?php echo $firstH; ?></span><span class="secondH"><?php echo $secondH; ?> --><!-- </span><span style="font-size: 12px; font-family: helvetica; letter-spacing:0px;"> UA/IFC textbook exchange</span></a> --></h4> 
-      <p><?php echo '<a title="'._("Post a new book!").'" href="http://pennua.org/textbook/publish.htm">'._("Post a new book!").'</a>';?></p>
-      <div style="float:right;"><a href="http://pennua.org"><img src="http://pennua.org/textbook/logo.jpg"/></a><a href="http://upennifc.com"><img src="http://pennua.org/textbook/ifclogo.jpg"/></a></div>
+    <div id="logo">
+      <h4><a href="<?php echo SITE_URL; ?>" title="<?php echo SITE_NAME; ?>"><img src="http://pennbookbazaar.com/pbbbanner.png"/><!-- <span class="firstH"><?php echo $firstH; ?></span><span class="secondH"><?php echo $secondH; ?> --><!-- </span><span style="font-size: 12px; font-family: helvetica; letter-spacing:0px;"> UA/IFC textbook exchange</span></a> --></h4>
+      <p><?php echo '<a title="'._("Post a new book!").'" href="http://pennbookbazaar.com/publish.htm">'._("Post a new book!").'</a>';?></p>
+      <div style="float:right;"><a href="http://pennua.org"><img src="http://pennbookbazaar.com/logo.jpg"/></a><a href="http://upennifc.com"><img src="http://pennbookbazaar.com/ifclogo.jpg"/></a></div>
       <div class="clear"></div>
     </div>
   </div>
@@ -31,9 +31,9 @@ $secondH=substr(SITE_NAME,$pos);//second part of the name un blue
      <div class="grid_12">
       <div class=" breadcrumb">
             <?php if(isset($categoryName)&&isset($categoryDescription)){ ?>
-			
-			    <a title="<?php echo _("Post a new book in");?> <?php echo $categoryName;?>" href="<?php echo SITE_URL.newURL();?>"><?php echo _("Post a new book in");?> <?php echo $categoryName;?></a> 
-	        <?php }            
+
+			    <a title="<?php echo _("Post a new book in");?> <?php echo $categoryName;?>" href="<?php echo SITE_URL.newURL();?>"><?php echo _("Post a new book in");?> <?php echo $categoryName;?></a>
+	        <?php }
 	            else echo date("l d, F Y");
 	        ?>
             <div style="float:right;"><b><?php echo _("Filter");?></b>:
@@ -43,4 +43,3 @@ $secondH=substr(SITE_NAME,$pos);//second part of the name un blue
     </div>
     <div class="clear"></div>
        <div class="grid_8" id="content_main">
-   

@@ -2,14 +2,14 @@
 //Open Classifieds Installation Config 07/09/2011 21:50:28
 
 /*
- * NB: This is the default config file. Set the proper Rename it 'config.php' 
+ * NB: This is the default config file. Set the proper Rename it 'config.php'
  * and set the proper values for it to work.
  */
 
 /* These are values you may want/need to change with different installs: */
 define('ADMIN','admin');
-define('ADMIN_PWD','smart@lec'); 
-define('DB_HOST','localhost'); 
+define('ADMIN_PWD','smart@lec');
+define('DB_HOST','localhost');
 define('DB_USER','DATABASE_CHANGE_ME'); //CHANGE
 define('DB_PASS','DB_PASSWORD_CHANGE_ME'); //CHANGE
 define('DB_NAME','DB_NAME_CHANGE_ME'); //CHANGE
@@ -19,7 +19,7 @@ define('SITE_ROOT',$_SERVER['DOCUMENT_ROOT'].'/textbook');
 define('IMG_UPLOAD_DIR',$_SERVER['DOCUMENT_ROOT'].'/textbook/images/');
 define('CACHE_DATA_FILE',$_SERVER['DOCUMENT_ROOT'].'/textbook/cache/');
 define('SITEMAP_FILE',$_SERVER['DOCUMENT_ROOT'].'/textbook/sitemap.xml');
-define('SITE_URL','http://pennua.org/textbook');
+define('SITE_URL','http://pennbookbazaar.com');
 
 /* These'll pretty much stay the same: */
 define('SITE_NAME','Penn Book Bazaar ');

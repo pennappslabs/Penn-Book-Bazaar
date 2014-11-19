@@ -28,7 +28,7 @@ Your message will be sent to the seller/buyer's Penn email account. Any further 
 <p><strong>Who created or is responsible for the textbook exchange?</strong><br/>
 Penn Book Bazaar was created by the UA over Summer 2010. It is maintained with the assistance of the Interfraternity Council. You can reach the moderators of the system at textbook@pennua.org.
 
-For more information, please see <a href="http://pennua.org/textbook/acknowledgments.htm">Acknowledgments</a>. </p>
+For more information, please see <a href="http://pennbookbazaar.com/acknowledgments.htm">Acknowledgments</a>. </p>
 
 <?php
 require_once('../includes/footer.php');
