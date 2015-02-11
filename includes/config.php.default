@@ -8,7 +8,7 @@
 
 /* These are values you may want/need to change with different installs: */
 define('ADMIN','admin');
-define('ADMIN_PWD','smart@lec');
+define('ADMIN_PWD','PASSWORD_CHANGE_ME');
 define('DB_HOST','localhost');
 define('DB_USER','DATABASE_CHANGE_ME'); //CHANGE
 define('DB_PASS','DB_PASSWORD_CHANGE_ME'); //CHANGE
