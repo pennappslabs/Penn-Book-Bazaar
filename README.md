@@ -2,7 +2,7 @@
 This is the installation of OpenClassifieds used for [Penn Book Bazaar](http://pennbookbazaar.com/). It has some issues, but it is ours, so we love it. Below please find the readme for OpenClassifieds itself.
 
 Love,
-PennApps Labs
+Penn Labs
 
 ## Set-Up ##
 1. Move `includes/config.php.default` to `includes/config.php` and fix the database info in said file. Might have to `grep` for `/home5/pennuaor/` to fix any file references.
