@@ -83,13 +83,48 @@ elseif(strpos($_SERVER["SCRIPT_NAME"], "contact.php")>0){
 }
 //sitemap
 elseif(strpos($_SERVER["SCRIPT_NAME"], "site-map.php")>0){
-	$html_title.=_("Sitemap").SEPARATOR.SITE_NAME;
-	$html_description=$html_title;	
+    $html_title.=_("Sitemap").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
 }
 //privacy
 elseif(strpos($_SERVER["SCRIPT_NAME"], "privacy.php")>0){
-	$html_title.=_("Privacy Policy").SEPARATOR.SITE_NAME;
-	$html_description=$html_title;	
+    $html_title.=_("Privacy Policy").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
+}
+//faq
+elseif(strpos($_SERVER["SCRIPT_NAME"], "faq.php")>0){
+    $html_title.=_("Frequently Asked Questions").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
+}
+//terms
+elseif(strpos($_SERVER["SCRIPT_NAME"], "terms.php")>0){
+    $html_title.=_("Terms and Conditions").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
+}
+//acknowledgments
+elseif(strpos($_SERVER["SCRIPT_NAME"], "acknowledgments.php")>0){
+    $html_title.=_("Acknowledgments").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
+}
+//login
+elseif(strpos($_SERVER["SCRIPT_NAME"], "login")>0){
+    $html_title.=_("Login").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
+}
+//forgot password
+elseif(strpos($_SERVER["SCRIPT_NAME"], "password")>0){
+    $html_title.=_("Forgot Password").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
+}
+//register
+elseif(strpos($_SERVER["SCRIPT_NAME"], "register")>0){
+    $html_title.=_("Register").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
+}
+//settings
+elseif(strpos($_SERVER["SCRIPT_NAME"], "settings")>0){
+    $html_title.=_("Settings").SEPARATOR.SITE_NAME;
+    $html_description=$html_title;
 }
 
 // common in all

@@ -214,7 +214,7 @@ function sb_account($beg,$end){
   $account = Account::createBySession();
   if ($account->exists){
     $ret='<h4>'._("").' '.$account->name.': Account</h4>';
-    $ret.= '<li><a href="http://pennbookbazaar.com/publish.htm">'._("Post a New Book!").'</a></li>';
+    $ret.= '<li><a href="'.SITE_URL.'/publish.htm">'._("Post a New Book!").'</a></li>';
     $ret.= '<li><a href="'.accountURL().'">'._("My Posts").'</a></li>';
     $ret.= '<li><a href="'.accountSettingsURL().'">'._("Change My Password").'</a></li>';
     $ret.= '<li><a href="'.accountLogoutURL().'">'._("Logout").'</a></li>';
