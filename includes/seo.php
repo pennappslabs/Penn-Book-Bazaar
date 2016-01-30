@@ -80,10 +80,10 @@ $title_dict = array(
     "faq.php" => "Frequently Asked Questions",
     "terms.php" => "Terms and Conditions",
     "acknowledgments.php" => "Acknowledgments",
-    "login.htm" => "Login",
-    "password.htm" => "Forgot Password?",
-    "register.htm" => "Register",
-    "settings.htm" => "Settings"
+    "login.php" => "Login",
+    "recoverpassword.php" => "Forgot Password?",
+    "register.php" => "Register",
+    "settings.php" => "Settings"
 );
 
 if (array_key_exists(basename($_SERVER['PHP_SELF']), $title_dict)) {
