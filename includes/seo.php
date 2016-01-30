@@ -71,64 +71,25 @@ elseif ( ($_SERVER["REQUEST_URI"]=="/"||(isset($type)&&!isset($categoryName))||i
 	//end title
 	$html_description=$html_title;	
 }
-//search form
-elseif(strpos($_SERVER["SCRIPT_NAME"], "search.php")>0){
-	$html_title.=_("Advanced Search").SEPARATOR.SITE_NAME;
-	$html_description=$html_title;	
-}
-//contact form
-elseif(strpos($_SERVER["SCRIPT_NAME"], "contact.php")>0){
-	$html_title.=_("Contact").SEPARATOR.SITE_NAME;
-	$html_description=$html_title;	
-}
-//sitemap
-elseif(strpos($_SERVER["SCRIPT_NAME"], "site-map.php")>0){
-    $html_title.=_("Sitemap").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
-//privacy
-elseif(strpos($_SERVER["SCRIPT_NAME"], "privacy.php")>0){
-    $html_title.=_("Privacy Policy").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
-//faq
-elseif(strpos($_SERVER["SCRIPT_NAME"], "faq.php")>0){
-    $html_title.=_("Frequently Asked Questions").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
-//terms
-elseif(strpos($_SERVER["SCRIPT_NAME"], "terms.php")>0){
-    $html_title.=_("Terms and Conditions").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
-//acknowledgments
-elseif(strpos($_SERVER["SCRIPT_NAME"], "acknowledgments.php")>0){
-    $html_title.=_("Acknowledgments").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
-//login
-elseif(strpos($_SERVER["SCRIPT_NAME"], "login")>0){
-    $html_title.=_("Login").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
-//forgot password
-elseif(strpos($_SERVER["SCRIPT_NAME"], "password")>0){
-    $html_title.=_("Forgot Password").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
-//register
-elseif(strpos($_SERVER["SCRIPT_NAME"], "register")>0){
-    $html_title.=_("Register").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
-//settings
-elseif(strpos($_SERVER["SCRIPT_NAME"], "settings")>0){
-    $html_title.=_("Settings").SEPARATOR.SITE_NAME;
-    $html_description=$html_title;
-}
 
-// common in all
-if (isset($page)&&$page>1) $html_title.=SEPARATOR._("page")." ".$page;
+$title_dict = array(
+    "search.php" => "Advanced Search",
+    "contact.php" => "Contact",
+    "site-map.php" => "Sitemap",
+    "privacy.php" => "Privacy Policy",
+    "faq.php" => "Frequently Asked Questions",
+    "terms.php" => "Terms and Conditions",
+    "acknowledgments.php" => "Acknowledgments",
+    "login.htm" => "Login",
+    "password.htm" => "Forgot Password?",
+    "register.htm" => "Register",
+    "settings.htm" => "Settings"
+);
+
+if (array_key_exists(basename($_SERVER['PHP_SELF']), $title_dict)) {
+    $html_title=_($title_dict[basename($_SERVER['PHP_SELF'])]).SEPARATOR.STIE_NAME;
+    $html_description = $html_title;
+}
 
 //better SEO with phpSEO class http:/neo22s.com/phpseo
 $seo = new phpSEO($html_title);
