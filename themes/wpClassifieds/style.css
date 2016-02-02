@@ -227,10 +227,10 @@ h4.carousel {color: #444;font-size: 16px;font-weight: normal;margin: 10px 0px 0p
 
 /* Footer */
 
-#footer {padding:15px 0;background:#F0F0F0; color:#444; text-align:right; text-transform:uppercase; font-weight:bold; font-size:11px;}
-#footer a {color:#444}
+#footer {padding:15px;background:#F0F0F0; color:#444; text-align:left; text-transform:uppercase; font-weight:bold; font-size:14px;}
+#footer a {color:#444; font-size: 11px}
 #footer ul {margin-bottom:10px;}
-#footer ul li {display:inline;margin-right:10px;}
+#footer ul li {display:inline;margin-right:0px;}
 #footer p {color:#666; text-transform:none; font-weight:normal;margin-right:10px;}
 #footer p a {color:#666;}
 
