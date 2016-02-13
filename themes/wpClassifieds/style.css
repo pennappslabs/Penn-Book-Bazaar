@@ -56,8 +56,10 @@ a:focus, a:hover, a:active {outline: none;}
 #logo h1, #logo h4 {float:left; display:block;font-size: 36px;font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;font-weight: bold;margin: 0px;padding: 0px 0px 5px 0px;text-decoration: none; letter-spacing:-3px;}
 #logo a:hover {text-decoration: none;}
 #logo {padding:0 0 0 10px;}
-#logo p { display:block; float:left; margin-top:5px;-moz-border-radius: 3px;-khtml-border-radius: 3px;-webkit-border-radius: 3px; background-color:#DFF7FA;padding: 8px 10px; margin-left:25px; font-weight:bold; color:#0c4a8a;}
-#logo img { float:left; display:block;}
+#logo p { display:block; margin-top:20px;-moz-border-radius: 3px;-khtml-border-radius: 3px;-webkit-border-radius: 3px; background-color:#DFF7FA;padding: 8px 10px; margin-left:25px; font-weight:bold; color:#0c4a8a;}
+#logo img { float:right; display:block; height: 50px;}
+#logo #pbblogo {width: 400px; height: auto; margin-top: 15px;}
+#postBook {float: right;}
 
 #top_search {padding: 8px 10px;-moz-border-radius: 3px;-khtml-border-radius: 3px;-webkit-border-radius: 3px; background-color:#F4F4F4; text-align:center; margin-top:10px;}
 #top_search_input {background: #F9F9F9;font-family: Arial, Tahoma, Verdana;font-size: 13px;width: 248px;color: #444;padding: 5px;display: inline;border: 1px solid #DDDDDD;}
