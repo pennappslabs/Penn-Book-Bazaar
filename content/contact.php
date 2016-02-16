@@ -19,7 +19,6 @@ if ($_POST){//contact form
 	else echo "<div id='sysmessage'>"._("Wrong captcha")."</div>";
 }
 ?>
-<a href="<?php echo SITE_URL."/".contactURL()."?subject="._("Suggest new category");?>"><?php echo _("Suggest new category");?></a>
 <h3><?php echo _("Contact");?></h3>
 <form method="post" action="" id="contactItem" onsubmit="return checkForm(this);">
 <p>

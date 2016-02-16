@@ -3,9 +3,9 @@ require_once('../includes/header.php');
 ?>
 
 
-<h2>
+<h1>
 	Terms and Conditions of Use
-</h2>
+</h1>
 
 <h3>
 	1. ACCEPTANCE OF TERMS

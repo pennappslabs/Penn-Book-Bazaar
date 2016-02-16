@@ -1,7 +1,7 @@
 <?php
 require_once('../includes/header.php');
 ?>
-<h2><?php echo _("Advanced Search");?></h2>
+<h1><?php echo _("Advanced Search");?></h1>
 <div class="item">
 <?php advancedSearchForm();?>
 </div>
