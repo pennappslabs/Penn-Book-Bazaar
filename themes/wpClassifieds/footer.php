@@ -3,7 +3,7 @@
  <div class="grid_4" id="sidebar">
 
       <ul id="sidebar_widgeted">
-      <?php getSideBar("<li class='widget widget_recent_entries'><div class='whitebox'>","</div></li>");?>
+      <?php getSideBar("<div class='widget widget_recent_entries'><div class='whitebox'>","</div></div>");?>
       </ul>
 
  </div>

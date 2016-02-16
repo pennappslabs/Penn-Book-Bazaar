@@ -147,7 +147,7 @@ function sb_links($beg,$end){//links sitemap
     echo $beg;
 
   ?>
-    <h4><?php echo _("Menu");?>:</h4>
+    <h4><?php echo _("Menu");?></h4>
     <ul>
       <?php if(FRIENDLY_URL) {?>
 
